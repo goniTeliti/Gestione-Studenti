@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Elenco Studenti</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Numero di Telefono</th>
+            <th>Azioni</th>
+        </tr>
+        <tr th:each="student : ${studenti}">
+            <td th:text="${student.id}"></td>
+            <td th:text="${student.name}"></td>
+            <td th:text="${student.email}"></td>
+            <td th:text="${student.phoneNumber}"></td>
+           <td id="azioni">
+			    <a  class="edit-link" th:href="@{/edit/{id}(id=${student.id})}">Modifica</a>
+			    <a class="delete-link" th:href="@{/delete/{id}(id=${student.id})}" >Elimina</a>
+           </td>
+        </tr>
+    </table>
+    <a class="add" href="/add-students.html">Aggiungi Studente</a>
+</body>
+</html>
